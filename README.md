@@ -14,11 +14,12 @@ conda create -n ppint-api python=3.11
 conda activate ppint-api
 pip install -r requirements.txt
 ```
-4. Run the API
+4. Change `file_root` to the the path of `ppint-api`
+5. Run the API
 ```bash
 uvicorn main:app --reload
 ```
-5. Navigate to `localhost:8000/docs`
+6. Navigate to `localhost:8000/docs`
 
 ## API Structure
 - `routers/` directory contains the API endpoints
