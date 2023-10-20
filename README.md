@@ -14,7 +14,7 @@ conda create -n ppint-api python=3.11
 conda activate ppint-api
 pip install -r requirements.txt
 ```
-4. Change `file_root` to the the path of `ppint-api`
+4. Change `file_root` to the the path of `ppint-api` directory in `config.py` file
 5. Run the API
 ```bash
 uvicorn main:app --reload
