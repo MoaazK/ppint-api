@@ -15,13 +15,14 @@ pdbRouter = APIRouter(prefix="/pdb")
 )
 def get_pdb_detail(
     pdbService: Annotated[PDBService, Depends(PDBService)],
-    pdb_list: Annotated[list[str] | None, Query(title="PDB List", description="List of PDBs or single PDB")] = None
+    pdb_ids: Annotated[str | None, Query(title="PDB List", description="List of PDBs or single PDB")] = None
 ) -> List[PDBDTO]:
 
-    if pdb_list is None or len(pdb_list) == 0:
+    if pdb_ids is None or len(pdb_ids) == 0:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="pdb_list cannot be empty")
 
     try:
+        pdb_list = pdb_ids.split(",") if pdb_ids else []
         return pdbService.get_pdb_detail(pdb_list)
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=e.args[0])

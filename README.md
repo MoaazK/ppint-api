@@ -21,6 +21,11 @@ uvicorn main:app --reload
 ```
 6. Navigate to `localhost:8000/docs`
 
+### Important
+Install [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) extension before starting development by either on of the following ways:
+- Search in VS Code extensions for the same name
+- Run this command: `ext install EditorConfig.EditorConfig`
+
 ## API Structure
 - `routers/` directory contains the API endpoints
 - `schemas/` directory contains models

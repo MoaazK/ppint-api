@@ -1,13 +1,21 @@
 import uvicorn
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from config import settings
-from routers import PDBAPI, InterfaceAPI
+from routers import PDBAPI, InterfaceAPI, StatisticsAPI
 
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 app.include_router(PDBAPI.pdbRouter)
 app.include_router(InterfaceAPI.interfaceRouter)
+app.include_router(StatisticsAPI.statisticsRouter)
 
 @app.get("/info")
 async def info():
